@@ -29,3 +29,39 @@ body{background:#08090b}.new-site{background:#08090b}.new-nav{position:fixed;top
 .project-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .45s ease;filter:saturate(.92) contrast(1.03)}
 .project-row:hover .project-visual img{transform:scale(1.06)}
 @media(max-width:760px){.brand-name{display:none}.brand-monogram{width:48px}.project-visual img{transform:none}}
+
+/* Moving work gallery, credential shelf, and revised hero atmosphere */
+.brand{width:58px;justify-content:center;gap:0}
+.brand-monogram{width:56px;height:40px}
+.new-hero{background:radial-gradient(ellipse at 72% 18%,#ff653522,transparent 26%),radial-gradient(ellipse at 22% 82%,#315cf025,transparent 34%),linear-gradient(122deg,#090b0e 0%,#101116 47%,#08090b 100%)}
+.new-hero:before{background:linear-gradient(115deg,transparent 0 31%,#ffffff08 31.1% 31.25%,transparent 31.35% 61%,#ff6a3b09 61.1% 61.3%,transparent 61.4%),linear-gradient(25deg,transparent 0 48%,#546dff09 48.1% 48.3%,transparent 48.4%);background-size:auto;mask-image:linear-gradient(#000,transparent 95%);opacity:1}
+.new-hero:after{width:58vw;height:58vw;right:-28vw;bottom:-35vw;border-color:#ff71451c;box-shadow:0 0 0 7vw #ff653507,0 0 0 14vw #5064ff05}
+.work-section{overflow:hidden;padding-inline:0}
+.work-section>header{padding-inline:clamp(22px,4vw,70px)}
+.project-marquee{width:100%;overflow:hidden;padding:12px 0 34px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.project-list{display:flex;width:max-content;gap:18px;animation:projectFlow 38s linear infinite}
+.project-marquee:hover .project-list,.project-marquee:focus-within .project-list{animation-play-state:paused}
+.project-row{flex:0 0 min(72vw,430px);grid-template-columns:38px 132px 1fr 32px;min-height:164px;padding:18px}
+.project-row:hover{padding:18px}
+.project-visual{width:132px;height:100px}
+@keyframes projectFlow{to{transform:translateX(calc(-50% - 9px))}}
+.certificates{padding:130px clamp(22px,4vw,70px);background:#e8e3da;color:#0a0a09}
+.certificates>header{display:grid;grid-template-columns:1fr 2fr 1fr;gap:5vw;align-items:start;margin-bottom:65px}
+.certificates>header>p{font-size:9px;letter-spacing:.2em;color:#716d66}
+.certificates h2{margin:0;font-size:clamp(48px,6.3vw,108px);line-height:.9;letter-spacing:-.065em}
+.certificates h2 em{font-style:normal;color:#335dff}
+.certificates>header>span{font-size:13px;line-height:1.7;color:#5d5953}
+.certificate-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}
+.certificate-grid>a,.certificate-grid>article{position:relative;min-height:300px;padding:28px;border:1px solid #bdb6ab;border-radius:22px;background:#f5f1e9;overflow:hidden}
+.certificate-grid>a{transition:.3s}
+.certificate-grid>a:hover{transform:translateY(-6px);border-color:#335dff;box-shadow:0 24px 60px #312b2020}
+.cert-mark{position:absolute;right:-25px;bottom:-52px;font-size:230px;line-height:1;font-weight:900;color:#335dff0d}
+.certificate-grid small{font-size:9px;letter-spacing:.18em;color:#335dff}
+.certificate-grid h3{position:relative;margin:80px 0 8px;font-size:clamp(28px,3vw,48px);letter-spacing:-.045em}
+.certificate-grid p{position:relative;color:#706a61}
+.certificate-grid b{position:absolute;left:28px;bottom:28px;font-size:10px;letter-spacing:.12em}
+.certificate-grid>article{background:#111318;color:#f4f1e9;border-color:#23262d}
+.certificate-grid>article>span{display:grid;place-items:center;width:48px;height:48px;border:1px solid #ffffff25;border-radius:50%;font-size:25px;color:#62d9ff}
+.certificate-grid>article h3{margin-top:56px}
+@media(max-width:760px){.work-section{padding-inline:0}.work-section>header{padding-inline:18px}.project-marquee{mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}.project-row{flex-basis:84vw;grid-template-columns:26px 92px 1fr 26px;min-height:128px}.project-row,.project-row:hover{padding:13px}.project-visual{width:92px;height:75px}.project-copy strong{font-size:22px}.certificates{padding:90px 18px}.certificates>header{grid-template-columns:1fr;gap:22px}.certificate-grid{grid-template-columns:1fr}.certificate-grid>a,.certificate-grid>article{min-height:250px}.certificate-grid h3{margin-top:55px}.brand{width:50px}.brand-monogram{width:48px}}
+@media(prefers-reduced-motion:reduce){.project-list{animation:none}}
