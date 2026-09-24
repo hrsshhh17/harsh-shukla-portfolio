@@ -13,7 +13,8 @@ export default function HomeExperience(){
   <section className="new-hero">
    <div className="hero-status"><i/> Available for full-time opportunities · 2027</div>
    <h1><span>FULL STACK</span><span>DEVELOPER<sup>01</sup></span></h1>
-   <div className="hero-bottom"><p>I design and build complete digital products—from robust APIs and databases to memorable, high-performance interfaces.</p><div><b>BASED IN</b><span>Dewas, Madhya Pradesh<br/>India</span></div><a href="#work">Explore selected work <i>↓</i></a></div>
+   <div className="hero-bottom"><p>I design and build complete digital products—from robust APIs and databases to memorable, high-performance interfaces.</p><a href="#work">Explore selected work <i>↓</i></a></div>
+   <aside className="hero-console" aria-label="Developer profile summary"><header><span><i/><i/><i/></span><b>harsh.system / overview</b><em>LIVE</em></header><div className="console-code"><small>01</small><code><i>const</i> developer = {'{'}</code><small>02</small><code>&nbsp;&nbsp;focus: <b>&quot;full-stack&quot;</b>,</code><small>03</small><code>&nbsp;&nbsp;builds: [<b>&quot;web apps&quot;</b>, <b>&quot;AI products&quot;</b>],</code><small>04</small><code>&nbsp;&nbsp;approach: <b>&quot;engineering × design&quot;</b></code><small>05</small><code>{'}'};</code></div><footer><span><b>06</b> shipped projects</span><span><b>10+</b> technologies</span><span><b>2027</b> graduation</span></footer></aside>
    <div className="hero-orbit" aria-hidden="true"><i/><i/><i/><span>HS</span></div>
   </section>
   <section id="work" className="work-section">
