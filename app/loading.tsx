@@ -1,0 +1,1 @@
+import {Brand} from '@/components/brand';export default function Loading(){return <div className="transition"><Brand/><p>CALIBRATING SYSTEM</p><h2>LOADING</h2><div className="progress"><i/></div></div>}
