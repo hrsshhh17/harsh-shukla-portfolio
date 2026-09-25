@@ -114,3 +114,11 @@ body{background:#08090b}.new-site{background:#08090b}.new-nav{position:fixed;top
 @media(max-width:900px){.kinetic-scene{inset:0 0 0 30%;opacity:.68}.kinetic-core{width:52vw;right:-5%;top:19%}.scene-caption{display:none}}
 @media(max-width:700px){.kinetic-scene{inset:7% -38% 34% 18%;opacity:.58}.kinetic-core{width:82vw;right:-8%;top:8%}.light-ribbon{top:52%}.new-hero:before{background-size:auto,58px 100%}}
 @media(prefers-reduced-motion:reduce){.kinetic-scene,.kinetic-core{transform:none}.kinetic-halo,.kinetic-core:before,.kinetic-core:after,.kinetic-core>i,.light-ribbon{animation:none}}
+
+/* Generative scrubbed hero film */
+.new-hero{background:linear-gradient(112deg,#07090d 0%,#090c12 48%,#0d0d14 100%)}
+.new-hero:before{background:linear-gradient(90deg,#07090df2 0%,#07090d99 31%,transparent 68%),radial-gradient(circle at 23% 83%,#294cff12,transparent 28%);background-size:auto;mask-image:none;opacity:1}
+.hero-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;pointer-events:none;filter:saturate(1.08) contrast(1.05)}
+.kinetic-scene{display:none}
+.new-hero h1,.hero-status,.hero-bottom,.hero-console,.hero-orbit{position:relative;z-index:2}
+@media(max-width:700px){.hero-canvas{left:10%;width:130%;opacity:.72}.new-hero:before{background:linear-gradient(180deg,#07090d8c,transparent 38%,#07090dd4 88%)}}
