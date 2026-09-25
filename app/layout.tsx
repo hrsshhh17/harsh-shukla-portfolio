@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import {SiteTools} from '@/components/site-tools';
+import {PointerTracker} from '@/components/pointer-tracker';
 
 export const metadata: Metadata = {
   title: "Harsh Shukla — Full Stack Developer",
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}<SiteTools/></body>
+      <body className="antialiased">{children}<SiteTools/><PointerTracker/></body>
     </html>
   );
 }
