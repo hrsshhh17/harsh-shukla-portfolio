@@ -1,15 +1,17 @@
 'use client';
 import {useEffect,useState} from 'react';
+import {useRouter} from 'next/navigation';
 import {projects,Project} from '@/lib/projects';
 import {Brand} from './brand';
 import {MobileMenu} from './mobile-menu';
 
 export default function HomeExperience(){
+ const router=useRouter();
  const [time,setTime]=useState('');
  const [opening,setOpening]=useState<Project|null>(null);
  const [filter,setFilter]=useState<'All'|Project['category']>('All');
  useEffect(()=>{const tick=()=>setTime(new Intl.DateTimeFormat('en-IN',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Kolkata'}).format(new Date()));tick();const id=setInterval(tick,30000);return()=>clearInterval(id)},[]);
- const open=(p:Project)=>{setOpening(p);setTimeout(()=>window.location.assign(`/projects/${p.slug}`),650)};
+ const open=(p:Project)=>{setOpening(p);setTimeout(()=>router.push(`/projects/${p.slug}`),650)};
  return <main className="new-site">
   <header className="new-nav"><Brand/><nav><a href="#work">Work</a><a href="#about">About</a><a href="/contact">Contact</a></nav><div><span>{time} IST</span><a href="/lets-talk">Let&apos;s talk ↗</a><MobileMenu/></div></header>
   <section className="new-hero">
