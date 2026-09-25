@@ -1,0 +1,5 @@
+'use client';
+import {Dialog} from 'radix-ui';
+import {useState} from 'react';
+const links=[['Projects','/#work'],['Skills','/#skills'],['Certificates','/#certificates'],['About','/about'],['Contact','/contact']];
+export function MobileMenu(){const [open,setOpen]=useState(false);return <Dialog.Root open={open} onOpenChange={setOpen}><Dialog.Trigger className="mobile-menu-trigger" aria-label="Open navigation">Menu <span>☰</span></Dialog.Trigger><Dialog.Portal><Dialog.Overlay className="modal-backdrop"/><Dialog.Content className="mobile-menu-panel"><header><Dialog.Title>Explore the portfolio</Dialog.Title><Dialog.Close aria-label="Close navigation">×</Dialog.Close></header><Dialog.Description>Engineering, selected work and ways to connect.</Dialog.Description><nav>{links.map(([label,href],i)=><a key={href} href={href} onClick={()=>setOpen(false)}><small>0{i+1}</small>{label}<span>↗</span></a>)}</nav><a className="talk-link" href="/lets-talk">Let’s talk ↗</a></Dialog.Content></Dialog.Portal></Dialog.Root>}

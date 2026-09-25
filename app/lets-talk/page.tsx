@@ -1,0 +1,4 @@
+import {PageFrame} from '@/components/page-frame';
+import {ContactForm} from '@/components/contact-form';
+export const metadata={title:'Let’s talk — Harsh Shukla',description:'Share a role, collaboration or freelance project brief.'};
+export default function LetsTalk(){return <PageFrame label="LET’S TALK / MAKE THE FIRST MOVE"><section className="brief-page"><div className="brief-intro"><p className="section-no">A FEW DETAILS. A BETTER CONVERSATION.</p><h1>What are<br/>we building<span>?</span></h1><p>Tell me where you want to go. Pick a direction, add the essentials, and review your message before sending.</p><ol><li><b>01</b>Choose your reason</li><li><b>02</b>Share the context</li><li><b>03</b>Review your brief</li></ol><a href="/contact">Just need my contact details? ↗</a></div><ContactForm/></section></PageFrame>}
