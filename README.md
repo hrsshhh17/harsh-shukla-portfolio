@@ -2,7 +2,7 @@
 
 A modern portfolio presenting my full-stack engineering work, AI-assisted products, and interactive web experiences. It gives recruiters a concise overview while providing deeper case studies for technical reviewers.
 
-**[View the live portfolio](https://harsh-shukla-system.hrsshhh17shukla06.chatgpt.site)** · **[Recruiter overview](https://harsh-shukla-system.hrsshhh17shukla06.chatgpt.site/recruiter)**
+**[View the live portfolio](https://harsh-shukla-portfolio-seven.vercel.app)** · **[Recruiter overview](https://harsh-shukla-portfolio-seven.vercel.app/recruiter)**
 
 ## What this portfolio demonstrates
 
@@ -93,7 +93,7 @@ For software engineering, full-stack development, or collaboration opportunities
 
 - [LinkedIn](https://www.linkedin.com/in/hrsshhh17)
 - [GitHub](https://github.com/hrsshhh17)
-- [Portfolio contact page](https://harsh-shukla-system.hrsshhh17shukla06.chatgpt.site/contact)
+- [Portfolio contact page](https://harsh-shukla-portfolio-seven.vercel.app/contact)
 
 ---
 

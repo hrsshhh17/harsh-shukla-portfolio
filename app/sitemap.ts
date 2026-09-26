@@ -2,7 +2,7 @@ import type {MetadataRoute} from 'next';
 import {projects} from '@/lib/projects';
 
 export default function sitemap():MetadataRoute.Sitemap{
- const base='https://harsh-shukla-system.hrsshhh17shukla06.chatgpt.site';
+ const base='https://harsh-shukla-portfolio-seven.vercel.app';
  return [
   {url:base,changeFrequency:'monthly',priority:1},
   {url:`${base}/about`,changeFrequency:'yearly',priority:.8},
