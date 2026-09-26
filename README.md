@@ -65,6 +65,17 @@ Create a production build with:
 pnpm build
 ```
 
+## Deploy on Vercel
+
+Import this repository into Vercel and keep the detected framework as **Next.js**. The included `vercel.json` uses the standard Next.js production build while the existing local workflow remains available for the Cloudflare-compatible runtime.
+
+The website works without contact-service credentials by falling back to an email draft. To enable direct contact delivery, configure these environment variables in Vercel:
+
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL`
+- `TURNSTILE_SITE_KEY`
+- `TURNSTILE_SECRET_KEY`
+
 ## Project structure
 
 ```text
