@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://harsh-shukla-portfolio-seven.vercel.app'),
   alternates:{canonical:'/'},
-  openGraph: {title:'Harsh Shukla — Full Stack Developer',description:'Full-stack applications, AI-assisted products and immersive web experiences.',type:'website',url:'/',siteName:'Harsh Shukla Portfolio',images:[{url:'/og-portfolio.png',width:1730,height:909,alt:'Harsh Shukla — Full-Stack Developer'}]},
-  twitter: {card:'summary_large_image',title:'Harsh Shukla — Full Stack Developer',description:'Full-stack applications, AI-assisted products and immersive web experiences.',images:['/og-portfolio.png']},
+  openGraph: {title:'Harsh Shukla — Full Stack Developer',description:'Full-stack applications, AI-assisted products and immersive web experiences.',type:'website',url:'/',siteName:'Harsh Shukla Portfolio',images:[{url:'/harsh-shukla-portfolio-preview-v2.jpg',width:1200,height:630,alt:'Harsh Shukla — Full-Stack Developer'}]},
+  twitter: {card:'summary_large_image',title:'Harsh Shukla — Full Stack Developer',description:'Full-stack applications, AI-assisted products and immersive web experiences.',images:['/harsh-shukla-portfolio-preview-v2.jpg']},
 };
 
 export default function RootLayout({
