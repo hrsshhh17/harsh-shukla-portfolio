@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   creator: "Harsh Shukla",
   publisher: "Harsh Shukla",
   category: "technology",
+  verification: {
+    google: "kpw62uXY9uyt0Dg4AqfoBtlr1cuFjKXOpLFWeeYk1-k",
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
