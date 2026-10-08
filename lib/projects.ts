@@ -1,4 +1,4 @@
-export type Project={slug:string;name:string;eyebrow:string;description:string;stack:string[];live:string;github:string;color:string;category:'Full Stack'|'AI'|'Frontend'|'3D';challenge:string;solution:string;architecture:string[];highlights:string[];evidence:string[];limitation:string};
+export type Project={slug:string;name:string;eyebrow:string;description:string;stack:string[];live:string;github:string;color:string;category:'Full Stack'|'AI'|'Frontend'|'3D';challenge:string;solution:string;architecture:string[];highlights:string[];evidence:string[];limitation:string;walkthrough?:boolean};
 export const projects:Project[] = [
   {
     "slug": "converge",
@@ -73,6 +73,24 @@ export const projects:Project[] = [
       "src/app/workspace/tickets/[ticketId]/page.tsx"
     ],
     "limitation": "AI output is a draft for human review; automatic customer reply delivery is not claimed."
+  },
+  {
+    "slug": "bingo-club",
+    "name": "BINGO CLUB",
+    "eyebrow": "Realtime multiplayer Bingo platform",
+    "description": "A full-stack two-player Bingo platform with private rooms, secret boards, live turns and chat, customizable profiles, friends and persistent match state.",
+    "stack": ["Next.js", "TypeScript", "React", "Cloudflare Workers", "D1", "Drizzle ORM", "Realtime"],
+    "live": "https://bingo-club.bingoclubplay.workers.dev/",
+    "github": "https://github.com/hrsshhh17/bingo-club",
+    "color": "#39ff88",
+    "category": "Full Stack",
+    "challenge": "Keep two secret boards synchronized across reconnects while enforcing turns, preventing duplicate actions and resolving simultaneous wins fairly.",
+    "solution": "Server-side room state and D1 persistence coordinate each match. Optimistic revisions serialize moves, action IDs deduplicate retries, and realtime updates with fallback synchronization keep both players current without exposing the opponent's board.",
+    "architecture": ["Next.js / React game client", "Cloudflare Worker API routes", "D1 + Drizzle persistent state", "Realtime room and chat synchronization"],
+    "highlights": ["Private room codes, secret boards and turn enforcement", "Undo, redo, auto-fill and variable 3–12 letter boards", "Friends, room chat, match history and rematches"],
+    "evidence": ["app/api/game/route.ts", "lib/game.ts", "db/schema.ts"],
+    "limitation": "A personal multiplayer project running on free-tier infrastructure; capacity and availability depend on configured Cloudflare and realtime service limits.",
+    "walkthrough": false
   },
   {
     "slug": "aether",

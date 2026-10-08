@@ -47,3 +47,6 @@ next-env.d.ts
 
 /*-check*.png
 /tsconfig.tsbuildinfo
+
+.npm-cache/
+package-lock.json
