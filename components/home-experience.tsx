@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {projects,Project} from '@/lib/projects';
 import {Brand} from './brand';
@@ -10,8 +10,14 @@ export default function HomeExperience(){
  const [time,setTime]=useState('');
  const [opening,setOpening]=useState<Project|null>(null);
  const [filter,setFilter]=useState<'All'|Project['category']>('All');
+ const marqueeRef=useRef<HTMLDivElement>(null);
+ const dragStart=useRef({x:0,scroll:0});
+ const dragMoved=useRef(false);
  useEffect(()=>{const tick=()=>setTime(new Intl.DateTimeFormat('en-IN',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Kolkata'}).format(new Date()));tick();const id=setInterval(tick,30000);return()=>clearInterval(id)},[]);
  const open=(p:Project)=>{setOpening(p);setTimeout(()=>router.push(`/projects/${p.slug}`),650)};
+ const startDrag=(event:React.PointerEvent<HTMLDivElement>)=>{if(event.pointerType!=='mouse'||filter!=='All')return;const el=marqueeRef.current;if(!el)return;dragMoved.current=false;dragStart.current={x:event.clientX,scroll:el.scrollLeft};el.classList.add('is-dragging');el.setPointerCapture(event.pointerId)};
+ const moveDrag=(event:React.PointerEvent<HTMLDivElement>)=>{const el=marqueeRef.current;if(!el?.classList.contains('is-dragging'))return;const distance=event.clientX-dragStart.current.x;if(Math.abs(distance)>5)dragMoved.current=true;el.scrollLeft=dragStart.current.scroll-distance};
+ const stopDrag=(event:React.PointerEvent<HTMLDivElement>)=>{const el=marqueeRef.current;if(!el)return;el.classList.remove('is-dragging');if(el.hasPointerCapture(event.pointerId))el.releasePointerCapture(event.pointerId);setTimeout(()=>{dragMoved.current=false},0)};
  return <main className="new-site">
   <header className="new-nav"><Brand/><nav><a href="#work">Work</a><a href="#about">About</a><a href="/contact">Contact</a></nav><div><span>{time} IST</span><a href="/lets-talk">Let&apos;s talk ↗</a><MobileMenu/></div></header>
   <section className="new-hero">
@@ -25,7 +31,7 @@ export default function HomeExperience(){
   <section id="work" className="work-section">
    <header><p>02 / SELECTED WORK</p><h2>Built to work.<br/><em>Designed to stay.</em></h2><span>{projects.length} projects across full-stack engineering, AI products and immersive frontend systems.</span></header>
    <div className="project-filters">{(['All','Full Stack','AI','Frontend','3D'] as const).map(x=><button key={x} className={filter===x?'active':''} aria-pressed={filter===x} onClick={()=>setFilter(x)}>{x}</button>)}</div>
-   <div className={`project-marquee ${filter!=='All'?'is-filtered':''}`}><div className="project-list">{(filter==='All'?[...projects,...projects]:projects.filter(p=>p.category===filter)).map((p,i)=><button key={`${p.slug}-${i}`} onClick={()=>open(p)} data-cursor="VIEW" className={`project-row project-${projects.indexOf(p)+1}`} tabIndex={filter==='All'&&i>=projects.length?-1:0} aria-hidden={filter==='All'&&i>=projects.length}><small>0{projects.indexOf(p)+1}</small><span className="project-visual"><img src={`/previews/${p.slug}.png`} alt={`${p.name} landing page`} loading="lazy"/><i/></span><span className="project-copy"><strong>{p.name}</strong><em>{p.eyebrow}</em></span><b className="project-arrow">↗</b></button>)}</div></div>
+   <div ref={marqueeRef} className={`project-marquee ${filter!=='All'?'is-filtered':''}`} aria-label="Selected projects. Swipe or drag horizontally to explore." onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={stopDrag} onPointerCancel={stopDrag}><div className="project-list">{(filter==='All'?[...projects,...projects]:projects.filter(p=>p.category===filter)).map((p,i)=><button key={`${p.slug}-${i}`} onClick={()=>{if(!dragMoved.current)open(p)}} data-cursor="VIEW" className={`project-row project-${projects.indexOf(p)+1}`} tabIndex={filter==='All'&&i>=projects.length?-1:0} aria-hidden={filter==='All'&&i>=projects.length}><small>0{projects.indexOf(p)+1}</small><span className="project-visual"><img src={`/previews/${p.slug}.png`} alt={`${p.name} landing page`} loading="lazy" draggable="false"/><i/></span><span className="project-copy"><strong>{p.name}</strong><em>{p.eyebrow}</em></span><b className="project-arrow">↗</b></button>)}</div></div>
   </section>
   <section id="about" className="about-section"><p>03 / PROFILE</p><div><h2>Engineering depth.<br/>Creative edge.</h2><article><p>Computer Science undergraduate focused on full-stack development. I build secure, responsive applications with JavaScript, React, Next.js, Node.js, Express, MongoDB and SQL.</p><p>Three.js and GSAP are my creative advantage—not my entire identity. The goal is always a complete product that solves a real problem and feels considered at every layer.</p><a href="/about">More about me ↗</a></article></div></section>
   <section className="capabilities"><p>04 / CAPABILITIES</p><div><article><small>01</small><h3>Product Frontend</h3><p>React, Next.js, TypeScript, responsive systems and accessible interfaces.</p></article><article><small>02</small><h3>Backend Systems</h3><p>Node.js, Express, REST APIs, authentication, MongoDB and SQL.</p></article><article><small>03</small><h3>Immersive Web</h3><p>Three.js, React Three Fiber, GSAP and purposeful interactive motion.</p></article></div></section>
