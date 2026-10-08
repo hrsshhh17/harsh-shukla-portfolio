@@ -11,13 +11,13 @@ export default function HomeExperience(){
  const [opening,setOpening]=useState<Project|null>(null);
  const [filter,setFilter]=useState<'All'|Project['category']>('All');
  const marqueeRef=useRef<HTMLDivElement>(null);
- const dragStart=useRef({x:0,scroll:0});
+ const dragStart=useRef({x:0,y:0,scroll:0,active:false});
  const dragMoved=useRef(false);
  useEffect(()=>{const tick=()=>setTime(new Intl.DateTimeFormat('en-IN',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Asia/Kolkata'}).format(new Date()));tick();const id=setInterval(tick,30000);return()=>clearInterval(id)},[]);
  const open=(p:Project)=>{setOpening(p);setTimeout(()=>router.push(`/projects/${p.slug}`),650)};
- const startDrag=(event:React.PointerEvent<HTMLDivElement>)=>{if(event.pointerType!=='mouse'||filter!=='All')return;const el=marqueeRef.current;if(!el)return;dragMoved.current=false;dragStart.current={x:event.clientX,scroll:el.scrollLeft};el.classList.add('is-dragging');el.setPointerCapture(event.pointerId)};
- const moveDrag=(event:React.PointerEvent<HTMLDivElement>)=>{const el=marqueeRef.current;if(!el?.classList.contains('is-dragging'))return;const distance=event.clientX-dragStart.current.x;if(Math.abs(distance)>5)dragMoved.current=true;el.scrollLeft=dragStart.current.scroll-distance};
- const stopDrag=(event:React.PointerEvent<HTMLDivElement>)=>{const el=marqueeRef.current;if(!el)return;el.classList.remove('is-dragging');if(el.hasPointerCapture(event.pointerId))el.releasePointerCapture(event.pointerId);setTimeout(()=>{dragMoved.current=false},0)};
+ const startDrag=(event:React.PointerEvent<HTMLDivElement>)=>{if(filter!=='All')return;const el=marqueeRef.current;if(!el)return;dragMoved.current=false;dragStart.current={x:event.clientX,y:event.clientY,scroll:el.scrollLeft,active:event.pointerType==='mouse'};if(event.pointerType==='mouse')el.classList.add('is-dragging');el.setPointerCapture(event.pointerId)};
+ const moveDrag=(event:React.PointerEvent<HTMLDivElement>)=>{const el=marqueeRef.current;if(!el||!el.hasPointerCapture(event.pointerId))return;const dx=event.clientX-dragStart.current.x,dy=event.clientY-dragStart.current.y;if(!dragStart.current.active){if(Math.abs(dy)>Math.abs(dx))return;if(Math.abs(dx)<6)return;dragStart.current.active=true;el.classList.add('is-dragging')}if(Math.abs(dx)>5)dragMoved.current=true;el.scrollLeft=dragStart.current.scroll-dx};
+ const stopDrag=(event:React.PointerEvent<HTMLDivElement>)=>{const el=marqueeRef.current;if(!el)return;el.classList.remove('is-dragging');dragStart.current.active=false;if(el.hasPointerCapture(event.pointerId))el.releasePointerCapture(event.pointerId);setTimeout(()=>{dragMoved.current=false},0)};
  return <main className="new-site">
   <header className="new-nav"><Brand/><nav><a href="#work">Work</a><a href="#about">About</a><a href="/contact">Contact</a></nav><div><span>{time} IST</span><a href="/lets-talk">Let&apos;s talk ↗</a><MobileMenu/></div></header>
   <section className="new-hero">
